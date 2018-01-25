@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script src="player.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Initiative Tracker</h1>
+    <form>
+        Character name:
+        <input type="text" name="name" id="name">
+        Armour Class:
+        <input type="text" name="ac" id="ac">
+        Hit points:
+        <input type="text" name="hp" id="hp">
+        Initiative:
+        <input type="text" name="initiative" id="initiative">
+        <button type="submit" onClick="addCreature()">Submit</button>
+    </form>
+    <table>
+        <tbody id="list">
+            <tr><th>Name</th><th>AC</th><th>HP</th><th>Initiative</th></tr>
+        </tbody>
+    </table>
+</body>
+</html>
