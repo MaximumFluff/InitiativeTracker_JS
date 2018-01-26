@@ -1,30 +1,50 @@
-class Player
-{
-    constructor(name, ac, hp, init)
-    {
-        this.name = name;
-        this.ac = ac;
-        this.hp = hp;
-        this.initiative = init;
-    }
-}
+let playerArray = [];
 
 addCreature = () =>
 {
     console.log("I am doing a thing!");
-    let name = document.getElementById("name").value;
-    let ac = document.getElementById("ac").value;
-    let hp = document.getElementById("hp").value;
-    let init = document.getElementById("initiative").value;
+    const name = document.getElementById("name").value;
+    const ac = document.getElementById("ac").value;
+    const hp = document.getElementById("hp").value;
+    const init = document.getElementById("initiative").value;
 
-    let newPlayer = new Player(name, ac, hp, init);
-    printCreature(newPlayer);
+    const newPlayer = new Player(name, ac, hp, init);
+    playerArray.push(newPlayer);
+    console.log(playerArray);
+    print();
 }
 
-printCreature = (creature) =>
+print = () =>
 {
     let printString = "";
-    printString += "<tr><td>" + creature.name + "</td>" + "<td>" + creature.ac + "</td>" + "<td>" + creature.hp + "</td>" + "<td>" + creature.initiative + "</td></tr>";
-    document.getElementById("list").innerHTML += printString;
+    let tr, td;
+    list.innerHTML = "<tr><th>Name</th><th>AC</th><th>HP</th><th>Initiative</th><th>Action</th></tr>";
+    for (let i = 0; i < playerArray.length; i++)
+    {
+        tr = document.createElement("tr");
+        list.appendChild(tr);
+        tr.appendChild(td = document.createElement("td"));
+        td.innerHTML = playerArray[i].name;
+        tr.appendChild(td = document.createElement("td"));
+        td.innerHTML = playerArray[i].ac;
+        tr.appendChild(td = document.createElement("td"));
+        td.setAttribute = playerArray[i].hp;
+        tr.appendChild(td = document.createElement("td"));
+        td.setAttribute = playerArray[i].initiative;
+        tr.appendChild(td = document.createElement("td"));
+        let button = document.createElement("button");
+        let text = document.createTextNode("Delete");
+        button.id = "delete" + i;
+        button.appendChild(text);
+        td.appendChild(button);
+    }
+
+    playerArray.forEach(function(player, i)
+    {
+        document.querySelector("#delete" + i).addEventListener("click", function() {
+            playerArray.splice(i, 1);
+            print();
+        })
+    })
     console.log(printString);
 }
