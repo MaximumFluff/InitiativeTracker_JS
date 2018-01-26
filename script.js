@@ -1,4 +1,5 @@
 let playerArray = [];
+let counter = 1;
 
 addCreature = () =>
 {
@@ -51,5 +52,21 @@ print = () =>
             print();
         })
     })
-    console.log(printString);
+    document.getElementById("list").rows[counter].setAttribute("style","background-color: pink");
+}
+
+next = () =>
+{
+    let table = document.getElementById("list").rows;
+    if (counter == 1)
+    {
+        table[playerArray.length].removeAttribute("style","background-color: pink");
+    }
+    table[counter].setAttribute("style","background-color: pink");
+    table[counter - 1].removeAttribute("style","background-color: pink");
+    counter++;
+    if (counter > playerArray.length)
+    {
+        counter = 1;
+    }
 }
