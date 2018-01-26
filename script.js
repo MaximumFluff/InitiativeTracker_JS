@@ -16,15 +16,18 @@ addCreature = () =>
 
 print = () =>
 {
-    let printString = "";
+    playerArray.sort((a, b) =>
+    {
+        return b.initiative - a.initiative;
+    })
     let tr; 
     let td;
     list.innerHTML = "<tr><th>Name</th><th>AC</th><th>HP</th><th>Initiative</th><th>Action</th></tr>";
     for (let i = 0; i < playerArray.length; i++)
     {
-        var table = document.getElementById("list");
-        var row = table.insertRow(i + 1);
-        var cell1, cell2, cell3, cell4, cell5;
+        let table = document.getElementById("list");
+        let row = table.insertRow(i + 1);
+        let cell1, cell2, cell3, cell4, cell5;
         let button = document.createElement("button");
         let text = document.createTextNode("Delete");
         button.id = "delete" + i;
