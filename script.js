@@ -57,6 +57,11 @@ print = () =>
 
 next = () =>
 {
+    counter++;
+    if (counter > playerArray.length)
+    {
+        counter = 1;
+    }
     let table = document.getElementById("list").rows;
     if (counter == 1)
     {
@@ -64,9 +69,4 @@ next = () =>
     }
     table[counter].setAttribute("style","background-color: pink");
     table[counter - 1].removeAttribute("style","background-color: pink");
-    counter++;
-    if (counter > playerArray.length)
-    {
-        counter = 1;
-    }
 }
