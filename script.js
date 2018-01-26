@@ -17,26 +17,28 @@ addCreature = () =>
 print = () =>
 {
     let printString = "";
-    let tr, td;
+    let tr; 
+    let td;
     list.innerHTML = "<tr><th>Name</th><th>AC</th><th>HP</th><th>Initiative</th><th>Action</th></tr>";
     for (let i = 0; i < playerArray.length; i++)
     {
-        tr = document.createElement("tr");
-        list.appendChild(tr);
-        tr.appendChild(td = document.createElement("td"));
-        td.innerHTML = playerArray[i].name;
-        tr.appendChild(td = document.createElement("td"));
-        td.innerHTML = playerArray[i].ac;
-        tr.appendChild(td = document.createElement("td"));
-        td.setAttribute = playerArray[i].hp;
-        tr.appendChild(td = document.createElement("td"));
-        td.setAttribute = playerArray[i].initiative;
-        tr.appendChild(td = document.createElement("td"));
+        var table = document.getElementById("list");
+        var row = table.insertRow(i + 1);
+        var cell1, cell2, cell3, cell4, cell5;
         let button = document.createElement("button");
         let text = document.createTextNode("Delete");
         button.id = "delete" + i;
         button.appendChild(text);
-        td.appendChild(button);
+        cell1 = row.insertCell(0);
+        cell2 = row.insertCell(1);
+        cell3 = row.insertCell(2);
+        cell4 = row.insertCell(3);
+        cell5 = row.insertCell(4);
+        cell1.innerHTML = playerArray[i].name;
+        cell2.innerHTML = playerArray[i].ac;
+        cell3.innerHTML = playerArray[i].hp;
+        cell4.innerHTML = playerArray[i].initiative;
+        cell5.appendChild(button);
     }
 
     playerArray.forEach(function(player, i)
