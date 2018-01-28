@@ -1,9 +1,12 @@
+//ES6 let - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let 
 let playerArray = [];
 let counter = 1;
 
+//ES6 Arrow functions - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
 addCreature = () =>
 {
     console.log("I am doing a thing!");
+    //ES6 const - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const
     const name = document.getElementById("name").value;
     const ac = document.getElementById("ac").value;
     const hp = document.getElementById("hp").value;
@@ -45,6 +48,7 @@ print = () =>
         cell5.appendChild(button);
     }
 
+    //ES6 for each - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
     playerArray.forEach(function(player, i)
     {
         document.querySelector("#delete" + i).addEventListener("click", function() {
