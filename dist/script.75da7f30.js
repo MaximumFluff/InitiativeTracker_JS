@@ -133,15 +133,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var playerArray = [];
 var counter = 1;
-document.getElementById("submit").addEventListener("click", addCreature);
-document.getElementById("next").addEventListener("click", next);
+document.getElementById('submit').addEventListener('click', addCreature);
+document.getElementById('next').addEventListener('click', next);
 
 function addCreature() {
-  console.log("I am doing a thing!");
-  var name = document.getElementById("name").value;
-  var ac = document.getElementById("ac").value;
-  var hp = document.getElementById("hp").value;
-  var init = document.getElementById("initiative").value;
+  var name = document.getElementById('name').value;
+  var ac = document.getElementById('ac').value;
+  var hp = document.getElementById('hp').value;
+  var init = document.getElementById('initiative').value;
   var newPlayer = new _player.default(name, ac, hp, init);
   playerArray.push(newPlayer);
   console.log(playerArray);
@@ -152,20 +151,22 @@ function print() {
   playerArray.sort(function (a, b) {
     return b.initiative - a.initiative;
   });
-  list.innerHTML = "<tr><th>Name</th><th>AC</th><th>HP</th><th>Initiative</th><th>Action</th></tr>";
+  list.innerHTML = '<tr><th>Name</th><th>AC</th><th>HP</th><th>Initiative</th><th>Action</th></tr>';
 
   for (var i = 0; i < playerArray.length; i++) {
-    var table = document.getElementById("list");
+    var table = document.getElementById('list');
     var row = table.insertRow(i + 1);
     var cell1 = void 0,
         cell2 = void 0,
         cell3 = void 0,
         cell4 = void 0,
         cell5 = void 0;
-    var button = document.createElement("button");
-    var hpTextField = document.createElement("input");
-    var text = document.createTextNode("Delete");
-    button.id = "delete" + i;
+    var button = document.createElement('button');
+    var hpTextField = document.createElement('input');
+    hpTextField.id = "input".concat(i);
+    hpTextField.setAttribute('style', 'width: 25px; text-align: center;');
+    var text = document.createTextNode('Delete');
+    button.id = 'delete' + i;
     button.appendChild(text);
     cell1 = row.insertCell(0);
     cell2 = row.insertCell(1);
@@ -180,12 +181,12 @@ function print() {
   }
 
   playerArray.forEach(function (player, i) {
-    document.querySelector("#delete" + i).addEventListener("click", function () {
+    document.querySelector('#delete' + i).addEventListener('click', function () {
       playerArray.splice(i, 1);
       print();
     });
   });
-  document.getElementById("list").rows[counter].setAttribute("style", "background-color: #97b0d8");
+  document.getElementById('list').rows[counter].setAttribute('style', 'background-color: #97b0d8');
 }
 
 function next() {
@@ -195,14 +196,14 @@ function next() {
     counter = 1;
   }
 
-  var table = document.getElementById("list").rows;
+  var table = document.getElementById('list').rows;
 
   if (counter == 1) {
-    table[playerArray.length].removeAttribute("style", "background-color: #97b0d8");
+    table[playerArray.length].removeAttribute('style', 'background-color: #97b0d8');
   }
 
-  table[counter].setAttribute("style", "background-color: #97b0d8");
-  table[counter - 1].removeAttribute("style", "background-color: #97b0d8");
+  table[counter].setAttribute('style', 'background-color: #97b0d8');
+  table[counter - 1].removeAttribute('style', 'background-color: #97b0d8');
 }
 },{"./player":"player.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -231,7 +232,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52270" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57247" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

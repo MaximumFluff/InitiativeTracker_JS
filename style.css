@@ -10,6 +10,10 @@ body {
   align-content: center;
 }
 
+#submit {
+  margin-left: 10px;
+}
+
 #next {
   margin-top: 25px;
   width: 200px;
@@ -55,4 +59,9 @@ table th {
 
 input {
   width: 100px;
+}
+
+label {
+  padding-left: 10px;
+  padding-right: 10px;
 }
