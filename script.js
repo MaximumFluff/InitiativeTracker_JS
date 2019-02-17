@@ -1,12 +1,13 @@
-//ES6 let - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let 
+import Player from './player';
+
 let playerArray = [];
 let counter = 1;
 
-//ES6 Arrow functions - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
-addCreature = () =>
-{
+document.getElementById("submit").addEventListener("click", addCreature);
+document.getElementById("next").addEventListener("click", next);
+
+function addCreature() {
     console.log("I am doing a thing!");
-    //ES6 const - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const
     const name = document.getElementById("name").value;
     const ac = document.getElementById("ac").value;
     const hp = document.getElementById("hp").value;
@@ -18,14 +19,11 @@ addCreature = () =>
     print();
 }
 
-print = () =>
-{
+function print() {
     playerArray.sort((a, b) =>
     {
         return b.initiative - a.initiative;
     })
-    let tr; 
-    let td;
     list.innerHTML = "<tr><th>Name</th><th>AC</th><th>HP</th><th>Initiative</th><th>Action</th></tr>";
     for (let i = 0; i < playerArray.length; i++)
     {
@@ -33,6 +31,7 @@ print = () =>
         let row = table.insertRow(i + 1);
         let cell1, cell2, cell3, cell4, cell5;
         let button = document.createElement("button");
+        let hpTextField = document.createElement("input")
         let text = document.createTextNode("Delete");
         button.id = "delete" + i;
         button.appendChild(text);
@@ -43,12 +42,11 @@ print = () =>
         cell5 = row.insertCell(4);
         cell1.innerHTML = playerArray[i].name;
         cell2.innerHTML = playerArray[i].ac;
-        cell3.innerHTML = playerArray[i].hp;
         cell4.innerHTML = playerArray[i].initiative;
+        cell3.appendChild(hpTextField).value = playerArray[i].hp;
         cell5.appendChild(button);
     }
 
-    //ES6 for each - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
     playerArray.forEach(function(player, i)
     {
         document.querySelector("#delete" + i).addEventListener("click", function() {
@@ -56,10 +54,10 @@ print = () =>
             print();
         })
     })
-    document.getElementById("list").rows[counter].setAttribute("style","background-color: pink");
+    document.getElementById("list").rows[counter].setAttribute("style","background-color: #97b0d8");
 }
 
-next = () =>
+function next()
 {
     counter++;
     if (counter > playerArray.length)
@@ -69,8 +67,8 @@ next = () =>
     let table = document.getElementById("list").rows;
     if (counter == 1)
     {
-        table[playerArray.length].removeAttribute("style","background-color: pink");
+        table[playerArray.length].removeAttribute("style","background-color: #97b0d8");
     }
-    table[counter].setAttribute("style","background-color: pink");
-    table[counter - 1].removeAttribute("style","background-color: pink");
+    table[counter].setAttribute("style","background-color: #97b0d8");
+    table[counter - 1].removeAttribute("style","background-color: #97b0d8");
 }

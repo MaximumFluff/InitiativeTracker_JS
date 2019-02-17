@@ -1,4 +1,4 @@
-class Player
+export default class Player
 {
     constructor(name, ac, hp, init)
     {
@@ -8,5 +8,3 @@ class Player
         this.initiative = init;
     }
 }
-
-//ES6 class syntax - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/class
